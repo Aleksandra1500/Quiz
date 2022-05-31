@@ -1,0 +1,249 @@
+﻿<Window x:Class="Quiz_tworzenie.Tworzenie"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Quiz_tworzenie"
+        mc:Ignorable="d"
+        Title="Tworzenie quizu" Height="450" Width="800"
+        WindowStartupLocation="CenterScreen">
+    <Window.Resources>
+        <Style TargetType="Button" x:Key="PRZYCISK">
+            <Setter Property="Background" Value="#FFE4DEDE"/>
+            <Setter Property="BorderBrush" Value="white"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="FontFamily" Value="Segoe Script"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+        </Style>
+
+        <Style TargetType="TextBlock" x:Key="PODPISY">
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="FontFamily" Value="Segoe Script"/>
+            <Setter Property="TextAlignment" Value="Center"/>
+        </Style>
+
+        <Style TargetType="TextBox" x:Key="WPISYWANIE">
+            <Setter Property="Background" Value="#FFE4DEDE"/>
+            <Setter Property="BorderBrush" Value="white"/>
+            <Setter Property="FontSize" Value="18"/>
+            <Setter Property="FontFamily" Value="Segoe Script"/>
+            <Setter Property="TextAlignment" Value="Center"/>
+        </Style>
+
+        <Style TargetType="CheckBox" x:Key="PTASZKI">
+            <Setter Property="Background" Value="#FFE4DEDE"/>
+            <Setter Property="BorderBrush" Value="white"/>
+        </Style>
+    </Window.Resources>
+    <Grid Background="#FFB4A7C7">
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="2.5*"/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="2*"/>
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="3*"/>
+            <ColumnDefinition Width="10*"/>
+            <ColumnDefinition Width="3*"/>
+        </Grid.ColumnDefinitions>
+
+        <Button x:Name="MODYFIKACJA"
+                Content="Modyfikuj"
+                Width="140"
+                Click="MODYFIKACJA_Click"
+                Margin="5,39,5,0" 
+                VerticalAlignment="Top"
+                Style="{StaticResource PRZYCISK}"/>
+
+        <Button x:Name="CZYSZCZENIE"
+                Content="Wyczyść"
+                Width="140"
+                Click="CZYSZCZENIE_Click"
+                Margin="5,70,5,0" 
+                VerticalAlignment="Top"
+                Style="{StaticResource PRZYCISK}" Grid.RowSpan="2"/>
+
+        <Button x:Name="USUŃ"
+                Content="Usuń"
+                Width="140"
+                Margin="5,26,5,0" 
+                VerticalAlignment="Top"
+                Click="USUŃ_Click"
+                Grid.Row="1"
+                Style="{StaticResource PRZYCISK}" />
+
+        <Button x:Name="WGRANIE"
+                Content="Wgraj quiz"
+                Width="140"
+                Click="WGRANIE_Click"
+                Margin="5,57,5,0" 
+                VerticalAlignment="Top"
+                Grid.RowSpan="2" 
+                Grid.Row="1"
+                Style="{StaticResource PRZYCISK}"/>
+
+        <TextBox x:Name="NAZWA" 
+                 Grid.Row="2"  
+                 Text="..." 
+                 Height="35"
+                 Width="424" 
+                 Margin="0,44,0,40"
+                 HorizontalAlignment="Center"
+                 MouseDoubleClick="NAZWA_MouseDoubleClick"
+                 Style="{StaticResource WPISYWANIE}" Grid.Column="1" Grid.RowSpan="2"/>
+
+        <TextBlock 
+                   Grid.Row="2" 
+                   Text="Nazwa quizu"
+                   HorizontalAlignment="Center" 
+                   VerticalAlignment="Center"
+                   Style="{StaticResource PODPISY}" Grid.Column="1"/>
+
+        <TextBox x:Name="PYTANIE" 
+                 Grid.Row="3"
+                 Text="..." 
+                 Height="35" 
+                 Width="708" 
+                 Margin="48,49,0,35"
+                 HorizontalAlignment="Left"
+                 MouseDoubleClick="PYTANIE_MouseDoubleClick"
+                 Style="{StaticResource WPISYWANIE}" Grid.RowSpan="2" Grid.ColumnSpan="3"/>
+
+        <TextBlock Grid.Row="3"
+                   Text="Wprowadzone pytanie" 
+                   Margin="0,27,0,0"
+                   HorizontalAlignment="Center" 
+                   VerticalAlignment="Top"
+                   Style="{StaticResource PODPISY}" Grid.Column="1"/>
+
+        <TextBlock Grid.Row="0" 
+                   Grid.Column="1" 
+                   Text="Lista pytań" 
+                   Margin="0,15,0,0"
+                   VerticalAlignment="Top"
+                   Style="{StaticResource PODPISY}"/>
+
+        <ListBox x:Name="LISTA" 
+                 Grid.Column="1" 
+                 Margin="6,46,6,46" 
+                 Grid.RowSpan="3" 
+                 FontSize="15" 
+                 FontFamily="Segoe Script" 
+                 Background="#FFB4A7C7" 
+                 BorderBrush="White"
+                 SelectionChanged="LISTA_SelectionChanged"/>
+
+        <TextBlock Grid.Column="1" 
+                   Grid.Row="4"
+                   Text="Możliwe odpowiedzi" 
+                   Margin="0,45,0,0" 
+                   Grid.RowSpan="2"
+                   HorizontalAlignment="Center" 
+                   VerticalAlignment="Top"
+                   Style="{StaticResource PODPISY}"/>
+
+        <TextBox x:Name="ODP1" 
+                 Grid.Row="5"  
+                 Text="..." 
+                 Height="35" 
+                 Width="268" 
+                 Margin="48,23,0,0" 
+                 Grid.ColumnSpan="2"
+                 HorizontalAlignment="Left" 
+                 VerticalAlignment="Top"
+                 MouseDoubleClick="ODP1_MouseDoubleClick"
+                 Style="{StaticResource WPISYWANIE}"/>
+
+        <TextBox x:Name="ODP2" 
+                 Grid.Row="6"
+                 Text="..."
+                 Height="35"
+                 Width="268" 
+                 Margin="48,13,0,12" 
+                 Grid.ColumnSpan="2"
+                 HorizontalAlignment="Left"
+                 MouseDoubleClick="ODP2_MouseDoubleClick"
+                 Style="{StaticResource WPISYWANIE}"/>
+
+        <TextBox x:Name="ODP3" 
+                 Grid.Row="5" 
+                 Text="..."
+                 Height="35"
+                 Width="267" 
+                 Margin="310,23,0,2" 
+                 Grid.ColumnSpan="2"
+                 HorizontalAlignment="Left"
+                 MouseDoubleClick="ODP3_MouseDoubleClick"
+                 Style="{StaticResource WPISYWANIE}" Grid.Column="1"/>
+
+        <TextBox x:Name="ODP4" 
+                 Grid.Column="1" 
+                 Grid.Row="6" 
+                 Text="..."
+                 Height="35"
+                 Width="267" 
+                 Margin="310,0,0,0" 
+                 Grid.ColumnSpan="2"
+                 HorizontalAlignment="Left" 
+                 VerticalAlignment="Center"
+                 MouseDoubleClick="ODP4_MouseDoubleClick"
+                 Style="{StaticResource WPISYWANIE}"/>
+
+        <Button x:Name="ZAPIS_PYTANIA"
+                Grid.Column="2"
+                Content="Zapisz&#xa;pytanie"
+                Width="140"
+                Margin="5,25,5,0" 
+                Grid.RowSpan="2" 
+                VerticalAlignment="Top"
+                Click="ZAPIS_PYTANIA_Click"
+                Style="{StaticResource PRZYCISK}" Grid.Row="1"/>
+
+        <Button x:Name="ZAPIS_QUIZU"
+                Grid.Column="2"
+                Content="Zapisz&#xa; quiz"
+                Width="140"
+                Margin="5,46,5,0" 
+                VerticalAlignment="Top"
+                Click="ZAPIS_QUIZU_Click"
+                Style="{StaticResource PRZYCISK}" Grid.RowSpan="2"/>
+
+        <CheckBox x:Name="PIERWSZY"
+                  Grid.Row="5"
+                  Grid.Column="1"
+                  HorizontalAlignment="Left" 
+                  Margin="179,33,0,0" 
+                  VerticalAlignment="Top"
+                  Style="{StaticResource PTASZKI}"/>
+
+        <CheckBox x:Name="DRUGI"
+                  Grid.Row="6"
+                  Grid.Column="1"
+                  HorizontalAlignment="Left" 
+                  VerticalAlignment="Center"
+                  Margin="179,0,0,0"
+                  Style="{StaticResource PTASZKI}" />
+
+        <CheckBox x:Name="TRZECI"
+                  Grid.Row="5"
+                  Grid.Column="2"
+                  HorizontalAlignment="Left" 
+                  VerticalAlignment="Top"
+                  Margin="90,33,0,0"
+                  Style="{StaticResource PTASZKI}"/>
+
+        <CheckBox x:Name="CZWARTY"
+                  Grid.Row="6"
+                  Grid.Column="2"
+                  HorizontalAlignment="Left" 
+                  VerticalAlignment="Center"
+                  Style="{StaticResource PTASZKI}" Margin="90,0,0,0"/>
+    </Grid>
+</Window>
